@@ -515,9 +515,9 @@ $(document).ready(function () {
         }
     });
 
-    $compilerOptions = $("#compiler-options");
-    $commandLineArguments = $("#command-line-arguments");
-    $commandLineArguments.attr("size", $commandLineArguments.attr("placeholder").length);
+    //$compilerOptions = $("#compiler-options");
+    //$commandLineArguments = $("#command-line-arguments");
+    //$commandLineArguments.attr("size", $commandLineArguments.attr("placeholder").length);
 
     $insertTemplateBtn = $("#insert-template-btn");
     $insertTemplateBtn.click(function (e) {
