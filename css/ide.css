@@ -5,13 +5,13 @@ html, body {
     padding: 0;
 }
 
-body {
+/*body {
     background: url(/images/background.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
+}*/
 
 .ui[class*="left action"].input>.dropdown {
     border-radius: 0 .28571429rem .28571429rem 0;
@@ -93,7 +93,7 @@ body {
 }
 
 #site-content {
-    height: calc(100% - 45px - 19px);
+    height: calc(100%);
 }
 
 #site-modal .header {

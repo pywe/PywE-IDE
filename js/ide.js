@@ -26,8 +26,8 @@ var isEditorDirty = false;
 var currentLanguageId;
 
 var $selectLanguage;
-var $compilerOptions;
-var $commandLineArguments;
+//var $compilerOptions;
+//var $commandLineArguments;
 var $insertTemplateBtn;
 var $runBtn;
 var $navigationMessage;
@@ -260,8 +260,8 @@ function save() {
     var content = JSON.stringify({
         source_code: encode(sourceEditor.getValue()),
         language_id: $selectLanguage.val(),
-        compiler_options: $compilerOptions.val(),
-        command_line_arguments: $commandLineArguments.val(),
+        //compiler_options: $compilerOptions.val(),
+        //command_line_arguments: $commandLineArguments.val(),
         stdin: encode(stdinEditor.getValue()),
         stdout: encode(stdoutEditor.getValue()),
         stderr: encode(stderrEditor.getValue()),
@@ -309,8 +309,8 @@ function loadSavedSource() {
             success: function(data, textStatus, jqXHR) {
                 sourceEditor.setValue(decode(data["source_code"]));
                 $selectLanguage.dropdown("set selected", data["language_id"]);
-                $compilerOptions.val(data["compiler_options"]);
-                $commandLineArguments.val(data["command_line_arguments"]);
+                //$compilerOptions.val(data["compiler_options"]);
+                //$commandLineArguments.val(data["command_line_arguments"]);
                 stdinEditor.setValue(decode(data["stdin"]));
                 stdoutEditor.setValue(decode(data["stdout"]));
                 stderrEditor.setValue(decode(data["stderr"]));
@@ -330,8 +330,8 @@ function loadSavedSource() {
             success: function (data, textStatus, jqXHR) {
                 sourceEditor.setValue(decode(data["source_code"]));
                 $selectLanguage.dropdown("set selected", data["language_id"]);
-                $compilerOptions.val(data["compiler_options"]);
-                $commandLineArguments.val(data["command_line_arguments"]);
+                //$compilerOptions.val(data["compiler_options"]);
+                //$commandLineArguments.val(data["command_line_arguments"]);
                 stdinEditor.setValue(decode(data["stdin"]));
                 stdoutEditor.setValue(decode(data["stdout"]));
                 stderrEditor.setValue(decode(data["stderr"]));
@@ -370,8 +370,8 @@ function run() {
     var sourceValue = encode(sourceEditor.getValue());
     var stdinValue = encode(stdinEditor.getValue());
     var languageId = resolveLanguageId($selectLanguage.val());
-    var compilerOptions = $compilerOptions.val();
-    var commandLineArguments = $commandLineArguments.val();
+    //var compilerOptions = $compilerOptions.val();
+    //var commandLineArguments = $commandLineArguments.val();
 
     if (parseInt(languageId) === 44) {
         sourceValue = sourceEditor.getValue();
@@ -381,8 +381,8 @@ function run() {
         source_code: sourceValue,
         language_id: languageId,
         stdin: stdinValue,
-        compiler_options: compilerOptions,
-        command_line_arguments: commandLineArguments
+        //compiler_options: compilerOptions,
+        //command_line_arguments: commandLineArguments
     };
 
     timeStart = performance.now();
@@ -516,8 +516,8 @@ $(document).ready(function () {
     });
 
     $compilerOptions = $("#compiler-options");
-    $commandLineArguments = $("#command-line-arguments");
-    $commandLineArguments.attr("size", $commandLineArguments.attr("placeholder").length);
+    //$commandLineArguments = $("#command-line-arguments");
+    //$commandLineArguments.attr("size", $commandLineArguments.attr("placeholder").length);
 
     $insertTemplateBtn = $("#insert-template-btn");
     $insertTemplateBtn.click(function (e) {
