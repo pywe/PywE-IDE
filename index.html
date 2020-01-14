@@ -244,6 +244,16 @@
              with <i class="hand scissors icon" style="color: #c123de;"></i> and <i class="heart icon" style="color: #f06553;"></i>  </a></span>
         <span id="status-line"></span>
     </div>
+
+    <script language="javascript">
+        
+        if(!window.location.search.substring(1) == "full=true") { // do not redirect if querystring is ?full=true
+          if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/Blackberry/i) || navigator.userAgent.match(/WebOs/i)) { // detect mobile browser
+            window.location.replace("http://url-of-your-mobile-page"); // redirect if mobile browser detected
+          }
+        }
+        
+      </script>
 </body>
 
 </html>
