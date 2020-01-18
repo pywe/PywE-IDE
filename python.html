@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create a new Python program - myCompiler</title>
+<meta name="exec-endpoint" content="https://exec.mycompiler.io/run/python">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" type="image/png" href="/img/mycompiler-logo-256.png" sizes="256x256">
+<link rel="icon" type="image/png" href="/img/mycompiler-logo-32.png" sizes="32x32">
+<meta property="og:image" content="https://www.mycompiler.io/img/mycompiler-logo-256.png">
+<meta name="twitter:image" content="https://www.mycompiler.io/img/mycompiler-logo-256.png">
+<meta itemProp="image" content="https://www.mycompiler.io/img/mycompiler-logo-256.png">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf-token" content="e7970bae0548d10d">
+
+</head>
+<body>
+<div id="site-content">
+<nav class="navbar is-dark" aria-label="main navigation">
+<div class="navbar-brand">
+<a class="navbar-item" href="/">
+<figure class="image is-32x32 logo">
+<img alt="" src="/images/mycompiler-logo-32.png">
+</figure>
+myCompiler
+</a>
+<a role="button" class="navbar-burger burger" data-target="top-nav" aria-label="menu" aria-expanded="false">
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+</a>
+</div>
+<div id="top-nav" class="navbar-menu">
+<div class="navbar-end">
+<a class="navbar-item" href="/recent">
+Recent
+</a>
+<a class="navbar-item" href="/login">
+Login
+</a>
+<a class="navbar-item" href="/signup">
+Sign up
+</a>
+</div>
+</div>
+</nav>
+<div class="main section">
+<div class="columns is-centered">
+<div class="column is-full-tablet is-three-quarters-desktop">
+<div class="columns is-mobile" id="code-title-column">
+<div class="column is-9-desktop is-three-quarters-tablet is-7-mobile">
+<input class="input" type="text" id="save-title" value="" placeholder="Enter a title...">
+</div>
+<div class="column">
+<div class="dropdown is-right is-hoverable is-fullwidth" id="lang-dropdown">
+<div class="dropdown-trigger is-fullwidth">
+<button class="button is-pulled-right" aria-haspopup="true" id="lang-select" data-default-ace="python" data-current-lang="python">
+<img class="lang-icon is-hidden-mobile" src="/images/lang/python_small.png" alt="">
+<span class="lang">
+Python
+</span>
+<span class="icon is-small">
+<i class="fas fa-angle-down" aria-hidden="true"></i>
+</span>
+</button>
+</div>
+<div class="dropdown-menu" role="menu">
+<div class="dropdown-content">
+<a class="dropdown-item" data-lang="nodejs" data-ace="javascript" data-langname="NodeJS" data-snippet="console.log(&quot;Hello world!&quot;);" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/nodejs">
+<img src="/images/lang/nodejs_small.png" alt="">
+NodeJS
+</a>
+<a class="dropdown-item" data-lang="python" data-ace="python" data-langname="Python" data-snippet="print(&#039;Hello world!&#039;)" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/python">
+<img src="/images/lang/python_small.png" alt="">
+Python
+</a>
+<a class="dropdown-item" data-lang="ruby" data-ace="ruby" data-langname="Ruby" data-snippet="puts &quot;Hello world!&quot;" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/ruby">
+<img src="/images/lang/ruby_small.png" alt="">
+Ruby
+</a>
+<a class="dropdown-item" data-lang="go" data-ace="golang" data-langname="Go" data-snippet="package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;Hello world!&quot;)
+}" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/go">
+<img src="/images/lang/go_small.png" alt="">
+Go
+</a>
+<a class="dropdown-item" data-lang="c" data-ace="c_cpp" data-langname="C" data-snippet="#include &lt;stdio.h&gt;
+
+int main() {
+    printf(&quot;Hello world!\n&quot;);
+    return 0;
+}" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/c">
+<img src="/images/lang/c_small.png" alt="">
+C
+</a>
+<a class="dropdown-item" data-lang="cpp" data-ace="c_cpp" data-langname="C++" data-snippet="#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; std::endl;
+    return 0;
+}" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/cpp">
+<img src="/images/lang/cpp_small.png" alt="">
+C++
+</a>
+<a class="dropdown-item" data-lang="java" data-ace="java" data-langname="Java" data-snippet="import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named &quot;Main&quot;.
+class Main {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello world!&quot;);
+    }
+}" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/java">
+<img src="/images/lang/java_small.png" alt="">
+Java
+</a>
+<a class="dropdown-item" data-lang="csharp" data-ace="csharp" data-langname="C#" data-snippet="using System;
+
+namespace MyCompiler {
+    class Program {
+        public static void Main(string[] args) {
+            Console.WriteLine(&quot;Hello world!&quot;);
+        }
+    }
+}" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/csharp">
+<img src="/images/lang/csharp_small.png" alt="">
+ C#
+</a>
+<a class="dropdown-item" data-lang="typescript" data-ace="typescript" data-langname="Typescript" data-snippet="const message:string = &quot;hello world!&quot;;
+console.log(message);" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/typescript">
+<img src="/images/lang/typescript_small.png" alt="">
+Typescript
+</a>
+<a class="dropdown-item" data-lang="php" data-ace="php" data-langname="PHP" data-snippet="&lt;?php
+
+echo &quot;Hello world!\n&quot;;" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/php">
+<img src="/images/lang/php_small.png" alt="">
+PHP
+</a>
+<a class="dropdown-item" data-lang="bash" data-ace="sh" data-langname="Bash" data-snippet="#!/bin/bash
+
+echo &quot;Hello world!&quot;" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/bash">
+<img src="/images/lang/bash_small.png" alt="">
+Bash
+</a>
+<a class="dropdown-item" data-lang="lua" data-ace="lua" data-langname="Lua" data-snippet="print &#039;hello world!&#039;" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/lua">
+<img src="/images/lang/lua_small.png" alt="">
+Lua
+</a>
+<a class="dropdown-item" data-lang="r" data-ace="r" data-langname="R" data-snippet="print(&#039;hello world&#039;)" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/r">
+<img src="/images/lang/r_small.png" alt="">
+R
+</a>
+<a class="dropdown-item" data-lang="fortran" data-ace="fortran" data-langname="Fortran" data-snippet="program main
+    print *, &quot;Hello world!&quot;
+end program main" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/fortran">
+<img src="/images/lang/fortran_small.png" alt="">
+Fortran
+</a>
+<a class="dropdown-item" data-lang="erlang" data-ace="erlang" data-langname="Erlang" data-snippet="% Your program must have a &#039;main&#039; function.
+
+main(_) -&gt; io:format(&quot;Hello world!&quot;)." data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/erlang">
+<img src="/images/lang/erlang_small.png" alt="">
+Erlang
+</a>
+<a class="dropdown-item" data-lang="sql" data-ace="mysql" data-langname="SQL" data-snippet="-- create a table
+CREATE TABLE students (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  gender TEXT NOT NULL
+);
+-- insert some values
+INSERT INTO students VALUES (1, &#039;Ryan&#039;, &#039;M&#039;);
+INSERT INTO students VALUES (2, &#039;Joanna&#039;, &#039;F&#039;);
+-- fetch some values
+SELECT * FROM students WHERE gender = &#039;F&#039;;" data-show-input="" data-exec-endpoint="https://exec.mycompiler.io/run/sql">
+<img src="/images/lang/sql_small.png" alt="">
+SQL
+</a>
+<a class="dropdown-item" data-lang="clojure" data-ace="clojure" data-langname="Clojure" data-snippet="(println &quot;Hello world!&quot;)" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/clojure">
+<img src="/images/lang/clojure_small.png" alt="">
+Clojure
+</a>
+<a class="dropdown-item" data-lang="d" data-ace="d" data-langname="D" data-snippet="import std.stdio;
+void main()
+{
+    writeln(&quot;Hello world!&quot;);
+}" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/d">
+<img src="/images/lang/d_small.png" alt="">
+D
+</a>
+<a class="dropdown-item" data-lang="perl" data-ace="perl" data-langname="Perl" data-snippet="print &#039;hello world&#039;;" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/perl">
+<img src="/images/lang/perl_small.png" alt="">
+Perl
+</a>
+<a class="dropdown-item" data-lang="asm-x86_64" data-ace="assembly_x86" data-langname="Assembly" data-snippet="section .data
+    msg db &quot;Hello world!&quot;, 0ah
+
+section .text
+    global _start
+
+_start:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, msg
+    mov rdx, 13
+    syscall
+    mov rax, 60
+    mov rdi, 0
+    syscall" data-show-input="1" data-exec-endpoint="https://exec.mycompiler.io/run/asm-x86_64">
+<img src="/images/lang/asm-x86_64_small.png" alt="">
+Assembly
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="level is-mobile" id="code-tabs-level">
+<div class="level-left">
+<div class="level-item">
+<div class="tabs is-fullwidth" id="code-tabs">
+<ul>
+<li data-target="code-editor-tab" id="code-tab" class="is-active">
+<a>
+<span class="icon">
+<i class="fas fa-code" aria-hidden="true"></i>
+</span>
+<span class="is-hidden-mobile">
+Code
+</span>
+</a>
+</li>
+<li data-target="input-editor-tab" id="input-tab" class="">
+<a>
+<span class="icon">
+<i class="fas fa-align-left" aria-hidden="true"></i>
+</span>
+<span class="is-hidden-mobile">
+Input
+</span>
+</a>
+</li>
+<li data-target="output-tab">
+<a>
+<span class="icon">
+<i class="fas fa-terminal" aria-hidden="true"></i>
+</span>
+<span class="is-hidden-mobile">
+Output
+</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="level-right actions-level">
+<div class="level-item">
+<button class="button is-primary" id="run-button">
+<span class="icon">
+<i class="fas fa-play" aria-hidden="true"></i>
+</span>
+<span class="is-hidden-mobile">
+Run
+</span>
+</button>
+</div>
+<div class="level-item">
+<button class="button is-link" id="save-button">
+<span class="icon">
+<i class="fas fa-file" aria-hidden="true"></i>
+</span>
+<span class="is-hidden-mobile">
+Save
+</span>
+</button>
+</div>
+</div>
+</div>
+<div id="code-editor-tab">
+<pre id="code-editor">print(&#039;Hello world!&#039;)</pre>
+</div>
+<div id="input-editor-tab" class="is-hidden">
+<pre id="input-editor"></pre>
+</div>
+<div id="output-tab" class="is-hidden">
+<div class="notification is-small is-info" id="notification-firstrun">
+Click on the Run button to get started.
+</div>
+<div class="notification is-small is-info is-hidden" id="notification-updated">
+The code/input has changed since you last clicked on Run. Click it
+again to see the updated changes.
+</div>
+<div class="program-output">
+<pre class="terminal" id="output-terminal"></pre>
+<div class="overlay is-hidden" id="progress-overlay">
+<progress class="progress is-small" max="100"></progress>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns is-centered">
+<div class="column is-full-tablet is-three-quarters-desktop">
+<div class="modal" id="switch-modal">
+<div class="modal-background"></div>
+<div class="modal-card">
+<div class="modal-card-head">
+<p class="modal-card-title">Keep existing code?</p>
+<button class="delete" aria-label="close"></button>
+</div>
+<div class="modal-card-body">
+<div class="content">
+You are trying to switch languages while there's code in the editor.
+<ul>
+<li>
+To keep it, select "Keep existing code".
+</li>
+<li>
+To replace it with an example, select "Replace with example".
+</li>
+</ul>
+</div>
+</div>
+<div class="modal-card-foot">
+<button id="switch-preserve" class="button is-success">
+Keep existing code
+</button>
+<button id="switch-replace" class="button">
+Replace with example
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="content has-text-centered">
+<h3 class="subtitle is-5">
+Supported languages
+</h3>
+<div class="columns is-centered">
+<div class="column is-three-quarters is-hidden-mobile">
+<div class="columns is-multiline">
+<div class="footer-link-column column is-one-quarter">
+<a href="#">NodeJS</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Python</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Ruby</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Go</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">C</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">C++</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Java</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">C#</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">TypeScript</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">PHP</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Bash</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Lua</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">R</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Fortran</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Erlang</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">SQL</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Clojure</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">D</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Perl</a>
+</div>
+<div class="footer-link-column column is-one-quarter">
+<a href="#">Assembly</a>
+</div>
+</div>
+</div>
+<div class="column is-three-quarters is-hidden-tablet">
+<div class="columns is-multiline is-mobile">
+<div class="footer-link-column column is-one-third">
+<a href="#">NodeJS</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Python</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Ruby</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Go</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">C</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">C++</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Java</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">C#</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">TypeScript</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">PHP</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Bash</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Lua</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">R</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Fortran</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Erlang</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">SQL</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Clojure</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">D</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Perl</a>
+</div>
+<div class="footer-link-column column is-one-third">
+<a href="#">Assembly</a>
+</div>
+</div>
+</div>
+</div>
+<br>
+<a href="#">Terms of service</a> |
+<a href="#">Privacy policy</a> |
+<a href="https://www.pywe.org">Contact us</a> |
+&copy; 2019 - 2020 pywe.org.
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.5/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.5/ext-language_tools.js"></script>
+<script src="/js/new.js"></script>
+</body>
+</html>
