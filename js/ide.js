@@ -45,7 +45,7 @@ var layoutConfig = {
         reorderEnabled: true
     },
     dimensions: {
-        borderWidth: 3,
+        borderWidth: 5,
         headerHeight: 22
     },
     content: [{
@@ -65,7 +65,7 @@ var layoutConfig = {
                 content: [{
                     type: "component",
                     componentName: "stdin",
-                    title: "STDIN",
+                    title: "Input",
                     isClosable: false,
                     componentState: {
                         readOnly: false
@@ -76,7 +76,7 @@ var layoutConfig = {
                 content: [{
                         type: "component",
                         componentName: "stdout",
-                        title: "STDOUT",
+                        title: "Output",
                         isClosable: false,
                         componentState: {
                             readOnly: true
@@ -84,7 +84,7 @@ var layoutConfig = {
                     }, {
                         type: "component",
                         componentName: "stderr",
-                        title: "STDERR",
+                        title: "Errors",
                         isClosable: false,
                         componentState: {
                             readOnly: true
