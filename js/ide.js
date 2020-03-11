@@ -45,8 +45,8 @@ var layoutConfig = {
         reorderEnabled: true
     },
     dimensions: {
-        borderWidth: 5,
-        headerHeight: 22
+        borderWidth: 1,
+        headerHeight: 45
     },
     content: [{
         type: "row",
