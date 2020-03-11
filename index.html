@@ -50,19 +50,20 @@
     <link type="text/css" rel="stylesheet" href="css/ide.css">
 
     <title>PywE IDE - Free and online code editor</title>
-    <link rel="shortcut icon" href="/images/logo (1).png" type="image/x-icon">
-    <link rel="icon" href="images/logo (1).png" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <div id="site-navigation" class="ui small compact fixed top inverted menu">
-        <div id="site-header" class="ui compact header item">
+    <div id="site-navigation" class="ui small compact inverted menu">
+        <div id="site-header" class="header item">
             <a href="/">
-                <p>WE-IDE</p>
+                <img id="site-icon" src="./images/icon.png">
+                <h2>WE-IDE</h2>
             </a>
         </div>
-        <div class="menu">
-            <div class="ui compact dropdown item site-links icon top left pointing"><i class="file code outline icon"></i>
+        <div class="left menu">
+            <div class="ui dropdown item site-links on-hover top left pointing"><i class="file code outline icon"></i>
                 <div class="menu">
                     <a class="item" target="_blank" href="https://pywe.github.io/PywE-IDE"><i class="file code icon"></i> New</a>
                     <div class="item" onclick="save()"><i class="save icon"></i> Save (Ctrl + S)</div>
@@ -70,120 +71,79 @@
                     <!-- <div class="item"><i class="share icon"></i> Share</div> -->
                    <!--<div id="insert-template-btn" class="item"><i class="file code outline icon"></i> Insert template
                         for current language</div>-->
-                        <div class="ui item borderless">
-                            <select id="select-language" class="ui compact dropdown">
-                                <option value="45" mode="UNKNOWN">Assembly (NASM 2.14.02)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="46" mode="shell">Bash (5.0.0)</option>
-                                <option value="47" mode="UNKNOWN">Basic (FBC 1.07.1)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="48" mode="c">C (GCC 7.4.0)</option>
-                                <option value="49" mode="c">C (GCC 8.3.0)</option>
-                                <option value="50" mode="c">C (GCC 9.2.0)</option>
-                                <option value="51" mode="csharp">C# (Mono 6.6.0.161)</option>
-                                <option value="52" mode="cpp">C++ (GCC 7.4.0)</option>
-                                <option value="53" mode="cpp">C++ (GCC 8.3.0)</option>
-                                <option value="54" mode="cpp">C++ (GCC 9.2.0)</option>
-                                <option value="55" mode="UNKNOWN">Common Lisp (SBCL 2.0.0)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="56" mode="UNKNOWN">D (DMD 2.089.1)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="57" mode="UNKNOWN">Elixir (1.9.4)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="58" mode="UNKNOWN">Erlang (OTP 22.2)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="44" mode="plaintext">Executable</option>
-                                <option value="59" mode="UNKNOWN">Fortran (GFortran 9.2.0)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="60" mode="go">Go (1.13.5)</option>
-                                <option value="61" mode="UNKNOWN">Haskell (GHC 8.8.1)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="62" mode="java">Java (OpenJDK 13.0.1)</option>
-                                <option value="63" mode="javascript">JavaScript (Node.js 12.14.0)</option>
-                                <option value="64" mode="lua">Lua (5.3.5)</option>
-                                <option value="1000" mode="python">Nim (stable)</option> <!-- Replacement mode. Help needed. -->
-                                <option value="65" mode="UNKNOWN">OCaml (4.09.0)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="66" mode="UNKNOWN">Octave (5.1.0)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="67" mode="pascal">Pascal (FPC 3.0.4)</option>
-                                <option value="68" mode="php">PHP (7.4.1)</option>
-                                <option value="43" mode="plaintext">Plain Text</option>
-                                <option value="69" mode="UNKNOWN">Prolog (GNU Prolog 1.4.5)</option> <!-- Unknown mode. Help needed. -->
-                                <option value="70" mode="python">Python (2.7.17)</option>
-                                <option value="71" mode="python">Python (3.8.1)</option>
-                                <option value="72" mode="ruby">Ruby (2.7.0)</option>
-                                <option value="73" mode="rust">Rust (1.40.0)</option>
-                                <option value="74" mode="rust">TypeScript (3.7.4)</option>
-                                <option value="1001" mode="rust">V (latest)</option> <!-- Replacement mode. Help needed. -->
-                            </select>
-                        </div>
+                        
                 </div>
             </div>
-
-
             <div class="item no-left-padding borderless">
-                <button id="run-btn" class="ui compact primary icon button"><i class="play icon"></i></button>
+                <button id="run-btn" class="ui primary icon button"><i class="play icon"></i></button>
             </div>
-            <div class="link compact item" onclick="$('#site-settings').modal('show')"><i class="cog icon"></i></div>
-            
-            <!--<div class="item fitted borderless">
-                <div class="ui input">
-                    <input id="compiler-options" type="text" placeholder="Compiler options"></input>
+            <div class="link icon item" onclick="$('#site-settings').modal('show')"><i class="cog icon"></i></div>
+            <!-- <div class="item fitted borderless"> -->
+                <!-- <div class="ui input"> -->
+                    <!-- <input id="compiler-options" type="text" placeholder="Compiler options"></input> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="item borderless"> -->
+                <!-- <div class="ui input"> -->
+                    <!-- <input id="command-line-arguments" type="text" placeholder="Command line arguments"></input> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <div class="right menu">
+                <!-- <a id="about" class="link icon compact item" target="_blank" href="https://pywe.org"><i class="external alternate icon"></i></a> -->
+                
+                <div class="ui compact dropdown icon item button site-links">
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <!-- <a class="item" target="_blank" href="#"><i -->
+                                <!-- class="patreon icon"></i> -->
+                            <!-- Become a Patron</a> -->
+                        <!-- <a class="item" target="_blank" href="#"><i -->
+                                <!-- class="paypal icon"></i> -->
+                            <!-- Donate with PayPal</a> -->
+                        <!-- <div class="divider"></div> -->
+                       
+                        <a class="item" target="_blank" href="#"><i
+                                class="exclamation circle icon"></i> Report an issue</a>
+                        <div class="divider"></div>
+                        <a class="item" target="_blank" href="#"><i class="envelope icon"></i>
+                            Subscribe
+                            to PywE news</a>
+                        <!-- <a class="item" target="_blank" href="#"><i -->
+                                <!-- class="discord icon"></i> Join a Discord server</a> -->
+                        <!-- <div class="divider"></div> -->
+                        <a class="item" target="_blank" href="mailto:pytonwithellie@gmail.com"><i
+                                class="paper plane icon"></i>
+                            Contact PywE</a>
+                        <a class="item" target="_blank" href="https://www.pywe.org"><i class="user icon"></i> About
+                            the
+                            author</a>
+                        <!-- <div class="divider"></div> -->
+                        <!-- <a class="item" target="_blank" href="https://junit.ide.pywe.org"><i class="external alternate icon"></i> JUnit Playground</a> -->
+                        <div class="divider"></div>
+                        <a class="item" target="_blank"
+                            href="https://www.reddit.com/submit?url=https%3A%2F%2Fide.pywe.org&title=PywE%20IDE"
+                            style="background-color: #ff4500 !important; color: white !important;"><i
+                                class="reddit icon"></i> Share
+                            on Reddit</a>
+                        <a class="item" target="_blank"
+                            href="https://twitter.com/intent/tweet?text=PywE%20IDE&url=https%3A%2F%2Fide.pywe.org&via=pywe"
+                            style="background-color: #1da1f2 !important; color: white !important;"><i
+                                class="twitter icon"></i>
+                            Share on Twitter</a>
+                        <a class="item" target="_blank"
+                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fide.pywe.org"
+                            style="background-color: #1877f2 !important; color: white !important;"><i
+                                class="facebook icon"></i>
+                            Share on Facebook</a>
+                    </div>
                 </div>
             </div>
-            <div class="item borderless">
-                <div class="ui input">
-                    <input id="command-line-arguments" type="text" placeholder="Command line arguments"></input>
-
-                </div>
-            </div>-->
-            
-            <div id="navigation-message" class="item">
+            <div 
+            id="navigation-message" class="item borderless">
                 <span class="navigation-message-text"></span>
             </div>
         </div>
-        <div class="right menu">
-            <a id="about" class="link item" target="_blank" href="https://pywe.org"><i class="info circle icon"></i> About</a>
-            
-            <div class="ui dropdown item site-links">
-                More
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a class="item" target="_blank" href="#"><i
-                            class="patreon icon"></i>
-                        Become a Patron</a>
-                    <a class="item" target="_blank" href="#"><i
-                            class="paypal icon"></i>
-                        Donate with PayPal</a>
-                    <div class="divider"></div>
-                   
-                    <a class="item" target="_blank" href="#"><i
-                            class="exclamation circle icon"></i> Report an issue</a>
-                    <div class="divider"></div>
-                    <a class="item" target="_blank" href="#"><i class="envelope icon"></i>
-                        Subscribe
-                        to PywE news</a>
-                    <a class="item" target="_blank" href="#"><i
-                            class="discord icon"></i> Join a Discord server</a>
-                    <div class="divider"></div>
-                    <a class="item" target="_blank" href="mailto:pytonwitellie@gmail.com"><i
-                            class="paper plane icon"></i>
-                        Contact the author</a>
-                    <a class="item" target="_blank" href="https://www.pywe.org"><i class="user icon"></i> About
-                        the
-                        author</a>
-                    <div class="divider"></div>
-                    <a class="item" target="_blank" href="https://junit.ide.pywe.org"><i class="external alternate icon"></i> JUnit Playground</a>
-                    <div class="divider"></div>
-                    <a class="item" target="_blank"
-                        href="https://www.reddit.com/submit?url=https%3A%2F%2Fide.pywe.org&title=PywE%20IDE"
-                        style="background-color: #ff4500 !important; color: white !important;"><i
-                            class="reddit icon"></i> Share
-                        on Reddit</a>
-                    <a class="item" target="_blank"
-                        href="https://twitter.com/intent/tweet?text=PywE%20IDE&url=https%3A%2F%2Fide.pywe.org&via=pywe"
-                        style="background-color: #1da1f2 !important; color: white !important;"><i
-                            class="twitter icon"></i>
-                        Share on Twitter</a>
-                    <a class="item" target="_blank"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fide.pywe.org"
-                        style="background-color: #1877f2 !important; color: white !important;"><i
-                            class="facebook icon"></i>
-                        Share on Facebook</a>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <div id="site-content"></div>
@@ -233,29 +193,56 @@
                 </div>
             </div>
         </div>
+        <select id="select-language" class="ui icon dropdown">
+            <i class="cog icon"></i>
+            <option value="45" mode="UNKNOWN">Assembly (NASM 2.14.02)</option> <!-- Unknown mode. Help needed. -->
+            <option value="46" mode="shell">Bash (5.0.0)</option>
+            <option value="47" mode="UNKNOWN">Basic (FBC 1.07.1)</option> <!-- Unknown mode. Help needed. -->
+            <option value="48" mode="c">C (GCC 7.4.0)</option>
+            <option value="49" mode="c">C (GCC 8.3.0)</option>
+            <option value="50" mode="c">C (GCC 9.2.0)</option>
+            <option value="51" mode="csharp">C# (Mono 6.6.0.161)</option>
+            <option value="52" mode="cpp">C++ (GCC 7.4.0)</option>
+            <option value="53" mode="cpp">C++ (GCC 8.3.0)</option>
+            <option value="54" mode="cpp">C++ (GCC 9.2.0)</option>
+            <option value="55" mode="UNKNOWN">Common Lisp (SBCL 2.0.0)</option> <!-- Unknown mode. Help needed. -->
+            <option value="56" mode="UNKNOWN">D (DMD 2.089.1)</option> <!-- Unknown mode. Help needed. -->
+            <option value="57" mode="UNKNOWN">Elixir (1.9.4)</option> <!-- Unknown mode. Help needed. -->
+            <option value="58" mode="UNKNOWN">Erlang (OTP 22.2)</option> <!-- Unknown mode. Help needed. -->
+            <option value="44" mode="plaintext">Executable</option>
+            <option value="59" mode="UNKNOWN">Fortran (GFortran 9.2.0)</option> <!-- Unknown mode. Help needed. -->
+            <option value="60" mode="go">Go (1.13.5)</option>
+            <option value="61" mode="UNKNOWN">Haskell (GHC 8.8.1)</option> <!-- Unknown mode. Help needed. -->
+            <option value="62" mode="java">Java (OpenJDK 13.0.1)</option>
+            <option value="63" mode="javascript">JavaScript (Node.js 12.14.0)</option>
+            <option value="64" mode="lua">Lua (5.3.5)</option>
+            <option value="1000" mode="python">Nim (stable)</option> <!-- Replacement mode. Help needed. -->
+            <option value="65" mode="UNKNOWN">OCaml (4.09.0)</option> <!-- Unknown mode. Help needed. -->
+            <option value="66" mode="UNKNOWN">Octave (5.1.0)</option> <!-- Unknown mode. Help needed. -->
+            <option value="67" mode="pascal">Pascal (FPC 3.0.4)</option>
+            <option value="68" mode="php">PHP (7.4.1)</option>
+            <option value="43" mode="plaintext">Plain Text</option>
+            <option value="69" mode="UNKNOWN">Prolog (GNU Prolog 1.4.5)</option> <!-- Unknown mode. Help needed. -->
+            <option value="70" mode="python">Python (2.7.17)</option>
+            <option value="71" mode="python">Python (3.8.1)</option>
+            <option value="72" mode="ruby">Ruby (2.7.0)</option>
+            <option value="73" mode="rust">Rust (1.40.0)</option>
+            <option value="74" mode="rust">TypeScript (3.7.4)</option>
+            <option value="1001" mode="rust">V (latest)</option> <!-- Replacement mode. Help needed. -->
+        </select>
     </div>
 
-    <div id="site-footer">
+    <div id="site-footer" class="ui compact">
         <!-- <span id="donate-line"> -->
             <!-- <a class="item" target="_blank" href="#"><i class="patreon icon" style="color: #f06553;"></i> Become a Patron</a> -->
             <!-- · -->
             <!-- <a class="item" target="_blank" href="#"><i class="paypal icon" style="color: #00457c;"></i></i> Donate with PayPal</a> -->
         <!-- </span> -->
         <div id="editor-status-line"></div>
+        <span id="status-line"></span>
         <span>© 2019-2020 <a href="https://pywe.org">Proudly Made by PywE in Ghana</a> · Powered by <a href="https://pywe.org">Pywe
              with <i class="hand scissors icon" style="color: #c123de;"></i> and <i class="heart icon" style="color: #f06553;"></i>  </a></span>
-        <span id="status-line"></span>
     </div>
-
-    <script language="javascript">
-        
-        if(!window.location.search.substring(1) == "full=true") { // do not redirect if querystring is ?full=true
-          if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/Blackberry/i) || navigator.userAgent.match(/WebOs/i)) { // detect mobile browser
-            window.location.replace("http://url-of-your-mobile-page"); // redirect if mobile browser detected
-          }
-        }
-        
-      </script>
 </body>
 
 </html>

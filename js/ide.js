@@ -26,8 +26,8 @@ var isEditorDirty = false;
 var currentLanguageId;
 
 var $selectLanguage;
-//var $compilerOptions;
-//var $commandLineArguments;
+var $compilerOptions;
+var $commandLineArguments;
 var $insertTemplateBtn;
 var $runBtn;
 var $navigationMessage;
@@ -45,15 +45,15 @@ var layoutConfig = {
         reorderEnabled: true
     },
     dimensions: {
-        borderWidth: 1,
-        headerHeight: 45
+        borderWidth: 3,
+        headerHeight: 22
     },
     content: [{
         type: "row",
         content: [{
             type: "component",
             componentName: "source",
-            title: "SOURCE",
+            title: "Code",
             isClosable: false,
             componentState: {
                 readOnly: false
@@ -84,7 +84,7 @@ var layoutConfig = {
                     }, {
                         type: "component",
                         componentName: "stderr",
-                        title: "Errors",
+                        title: "Error",
                         isClosable: false,
                         componentState: {
                             readOnly: true
@@ -140,8 +140,9 @@ function localStorageGetItem(key) {
 }
 
 function showMessages() {
-    var width = $about.offset().left - parseFloat($about.css("padding-left")) -
-                $navigationMessage.parent().offset().left - parseFloat($navigationMessage.parent().css("padding-left")) - 5;
+    var width = 0
+    // = $about.offset().right - parseFloat($about.css("padding-left")) -
+                // $navigationMessage.parent().offset().left - parseFloat($navigationMessage.parent().css("padding-left")) - 5;
 
     if (width < 200 || messagesData === undefined) {
         return;
@@ -165,7 +166,7 @@ function showMessages() {
 
 function loadMessages() {
     $.ajax({
-        url: "",
+        url: "https://api.myjson.com/bins/1dkwm6",
         type: "GET",
         headers: {
             "Accept": "application/json"
@@ -260,16 +261,16 @@ function save() {
     var content = JSON.stringify({
         source_code: encode(sourceEditor.getValue()),
         language_id: $selectLanguage.val(),
-        //compiler_options: $compilerOptions.val(),
-        //command_line_arguments: $commandLineArguments.val(),
-        stdin: encode(stdinEditor.getValue()),
-        stdout: encode(stdoutEditor.getValue()),
-        stderr: encode(stderrEditor.getValue()),
+        // compiler_options: $compilerOptions.val(),
+        // command_line_arguments: $commandLineArguments.val(),
+        input: encode(stdinEditor.getValue()),
+        output: encode(stdoutEditor.getValue()),
+        error: encode(stderrEditor.getValue()),
         compile_output: encode(compileOutputEditor.getValue()),
         sandbox_message: encode(sandboxMessageEditor.getValue()),
         status_line: encode($statusLine.html())
     });
-    var filename = "pywe-ide.json";
+    var filename = "we-ide.json";
     var data = {
         content: content,
         filename: filename
@@ -309,8 +310,8 @@ function loadSavedSource() {
             success: function(data, textStatus, jqXHR) {
                 sourceEditor.setValue(decode(data["source_code"]));
                 $selectLanguage.dropdown("set selected", data["language_id"]);
-                //$compilerOptions.val(data["compiler_options"]);
-                //$commandLineArguments.val(data["command_line_arguments"]);
+                $compilerOptions.val(data["compiler_options"]);
+                $commandLineArguments.val(data["command_line_arguments"]);
                 stdinEditor.setValue(decode(data["stdin"]));
                 stdoutEditor.setValue(decode(data["stdout"]));
                 stderrEditor.setValue(decode(data["stderr"]));
@@ -330,11 +331,11 @@ function loadSavedSource() {
             success: function (data, textStatus, jqXHR) {
                 sourceEditor.setValue(decode(data["source_code"]));
                 $selectLanguage.dropdown("set selected", data["language_id"]);
-                //$compilerOptions.val(data["compiler_options"]);
-                //$commandLineArguments.val(data["command_line_arguments"]);
-                stdinEditor.setValue(decode(data["stdin"]));
-                stdoutEditor.setValue(decode(data["stdout"]));
-                stderrEditor.setValue(decode(data["stderr"]));
+                // $compilerOptions.val(data["compiler_options"]);
+                // $commandLineArguments.val(data["command_line_arguments"]);
+                stdinEditor.setValue(decode(data["input"]));
+                stdoutEditor.setValue(decode(data["output"]));
+                stderrEditor.setValue(decode(data["error"]));
                 compileOutputEditor.setValue(decode(data["compile_output"]));
                 sandboxMessageEditor.setValue(decode(data["sandbox_message"]));
                 $statusLine.html(decode(data["status_line"]));
@@ -370,8 +371,8 @@ function run() {
     var sourceValue = encode(sourceEditor.getValue());
     var stdinValue = encode(stdinEditor.getValue());
     var languageId = resolveLanguageId($selectLanguage.val());
-    //var compilerOptions = $compilerOptions.val();
-    //var commandLineArguments = $commandLineArguments.val();
+    // var compilerOptions = $compilerOptions.val();
+    // var commandLineArguments = $commandLineArguments.val();
 
     if (parseInt(languageId) === 44) {
         sourceValue = sourceEditor.getValue();
@@ -381,8 +382,8 @@ function run() {
         source_code: sourceValue,
         language_id: languageId,
         stdin: stdinValue,
-        //compiler_options: compilerOptions,
-        //command_line_arguments: commandLineArguments
+        // compiler_options: compilerOptions,
+        // command_line_arguments: commandLineArguments
     };
 
     timeStart = performance.now();
@@ -504,7 +505,7 @@ $(window).resize(function() {
 });
 
 $(document).ready(function () {
-    console.log("Hey, PywE Cares, Do you. Have fun!");
+    console.log("Hey thanks for looking here,we know it, Happy Coding and Have fun!");
 
     $selectLanguage = $("#select-language");
     $selectLanguage.change(function (e) {
@@ -515,9 +516,9 @@ $(document).ready(function () {
         }
     });
 
-    $compilerOptions = $("#compiler-options");
-    //$commandLineArguments = $("#command-line-arguments");
-    //$commandLineArguments.attr("size", $commandLineArguments.attr("placeholder").length);
+    // $compilerOptions = $("#compiler-options");
+    // $commandLineArguments = $("#command-line-arguments");
+    // $commandLineArguments.attr("size", $commandLineArguments.attr("placeholder").length);
 
     $insertTemplateBtn = $("#insert-template-btn");
     $insertTemplateBtn.click(function (e) {
@@ -805,7 +806,7 @@ main(_) ->\n\
 ";
 
 var executableSource = "\
-PywE IDE assumes that content of executable is Base64 encoded.\n\
+WE-IDE assumes that content of executable is Base64 encoded.\n\
 \n\
 This means that you should Base64 encode content of your binary,\n\
 paste it here and click \"Run\".\n\
@@ -813,7 +814,7 @@ paste it here and click \"Run\".\n\
 Here is an example of compiled \"hello, world\" NASM program.\n\
 Content of compiled binary is Base64 encoded and used as source code.\n\
 \n\
-https://ide.pywe.org/?kS_f\n\
+https://pywe.github.io/PywE-IDE/?kS_f\n\
 ";
 
 var fortranSource = "\
@@ -847,7 +848,7 @@ var javaScriptSource = "console.log(\"hello, world\");";
 var luaSource = "print(\"hello, world\")";
 
 var nimSource = "\
-# On the PywE IDE, Nim is automatically\n\
+# On the WE-IDE, Nim is automatically\n\
 # updated every day to the latest stable version.\n\
 echo \"hello, world\"\n\
 ";
@@ -889,7 +890,7 @@ fn main() {\n\
 var typescriptSource = "console.log(\"hello, world\");";
 
 var vSource = "\
-// On the PywE IDE, V is automatically\n\
+// On the WE-IDE, V is automatically\n\
 // updated every hour to the latest version.\n\
 fn main() {\n\
     println('hello, world')\n\
